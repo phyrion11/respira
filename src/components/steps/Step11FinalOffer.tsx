@@ -87,7 +87,7 @@ const Step11FinalOffer = ({ userProfile, onUpdateProfile, onNext }: Step11FinalO
         <div className="text-center mb-8">
           <div className="w-20 h-20 mx-auto mb-6 premium-card bg-gradient-to-br from-gold/20 to-success/20 border-gold/40 flex items-center justify-center">
             <img 
-              src="/assets/Logo_Respiralivre_variant_2.png" 
+              src="/assets/Logo_Respiralivre.png" 
               alt="Respira Livre" 
               className="w-12 h-12 object-contain"
             />

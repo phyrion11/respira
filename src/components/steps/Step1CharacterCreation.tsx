@@ -67,7 +67,7 @@ const Step1CharacterCreation = ({ userProfile, onUpdateProfile, onNext }: Step1C
           {/* Logo */}
           <div className="w-24 h-24 mx-auto mb-6 premium-card p-4 bg-gradient-to-br from-primary/10 to-success/10">
             <img 
-              src="/assets/Logo_Respiralivre_variant_1.png" 
+              src="/assets/Logo_Respiralivre.png" 
               alt="Respira Livre" 
               className="w-full h-full object-contain"
             />
