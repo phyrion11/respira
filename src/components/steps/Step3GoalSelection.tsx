@@ -6,6 +6,7 @@ interface Step3GoalSelectionProps {
   userProfile: UserProfile;
   onUpdateProfile: (updates: Partial<UserProfile>) => void;
   onNext: () => void;
+  onBack?: () => void;
 }
 
 const goals = [
@@ -53,7 +54,7 @@ const goals = [
   }
 ];
 
-const Step3GoalSelection = ({ userProfile, onUpdateProfile, onNext }: Step3GoalSelectionProps) => {
+const Step3GoalSelection = ({ userProfile, onUpdateProfile, onNext, onBack }: Step3GoalSelectionProps) => {
   const [selectedGoal, setSelectedGoal] = useState<string | null>(null);
   const [isConfirming, setIsConfirming] = useState(false);
 

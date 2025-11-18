@@ -1,14 +1,16 @@
 import { useState, useEffect } from 'react';
 import { UserProfile } from '@/types/funnel';
 import { Crown, Star, Zap, Shield, Trophy, CheckCircle, Clock, Users } from 'lucide-react';
+import { StepWrapper } from '../StepWrapper';
 
 interface Step11FinalOfferProps {
   userProfile: UserProfile;
   onUpdateProfile: (updates: Partial<UserProfile>) => void;
   onNext: () => void;
+  onBack?: () => void;
 }
 
-const Step11FinalOffer = ({ userProfile, onUpdateProfile, onNext }: Step11FinalOfferProps) => {
+const Step11FinalOffer = ({ userProfile, onUpdateProfile, onNext, onBack }: Step11FinalOfferProps) => {
   const [timeLeft, setTimeLeft] = useState(15 * 60); // 15 minutes
   const [utmParams, setUtmParams] = useState({
     source: 'direct',
@@ -80,23 +82,23 @@ const Step11FinalOffer = ({ userProfile, onUpdateProfile, onNext }: Step11FinalO
   const completionLevel = Math.min(100, Math.floor((totalXP / 1000) * 100));
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-background to-primary/5 flex flex-col">
-      <div className="flex-1 p-6 max-w-md mx-auto w-full">
-        
+    <StepWrapper
+      title="🏆 Parabéns pela Jornada!"
+      subtitle="Seus resultados estão prontos. Veja sua solução personalizada"
+      onBack={onBack}
+    >
+      <div className="space-y-6">
         {/* Results Header */}
-        <div className="text-center mb-8">
-          <div className="w-20 h-20 mx-auto mb-6 premium-card bg-gradient-to-br from-gold/20 to-success/20 border-gold/40 flex items-center justify-center">
+        <div className="text-center">
+          <div className="w-20 h-20 mx-auto mb-6 premium-card bg-gradient-to-br from-gold/20 to-success/20 border-gold/40 flex items-center justify-center animate-float">
             <img 
               src="/assets/Logo_Respiralivre.png" 
               alt="Respira Livre" 
               className="w-12 h-12 object-contain"
             />
           </div>
-          <h1 className="text-3xl font-bold text-gradient mb-4">
-            Seus Resultados Estão Prontos!
-          </h1>
           <p className="text-muted-foreground">
-            Baseado nas suas {userProfile.badges.length} conquistas, aqui está sua solução personalizada
+            Baseado nas suas <span className="text-gold font-bold">{userProfile.badges.length} conquistas</span>
           </p>
         </div>
 
@@ -213,14 +215,14 @@ const Step11FinalOffer = ({ userProfile, onUpdateProfile, onNext }: Step11FinalO
         {/* CTA Button */}
         <button
           onClick={handleCheckout}
-          className="w-full premium-button text-xl py-6 flex items-center justify-center gap-3 mb-4"
+          className="w-full btn-premium text-xl py-6 flex items-center justify-center gap-3 mb-4 animate-glow-pulse"
         >
           <Shield className="w-6 h-6" />
           Garantir Minha Liberdade Agora
         </button>
 
         {/* Security and Guarantee */}
-        <div className="text-center space-y-2">
+        <div className="text-center space-y-2 animate-fade-up" style={{animationDelay: '0.3s'}}>
           <div className="flex items-center justify-center gap-2">
             <Shield className="w-4 h-4 text-success" />
             <span className="text-xs text-success">Pagamento 100% Seguro</span>
@@ -234,7 +236,7 @@ const Step11FinalOffer = ({ userProfile, onUpdateProfile, onNext }: Step11FinalO
           </p>
         </div>
       </div>
-    </div>
+    </StepWrapper>
   );
 };
 

@@ -1,14 +1,16 @@
 import { useState, useEffect } from 'react';
 import { UserProfile } from '@/types/funnel';
 import { Brain, Play, SkipForward, Trophy, Timer, Zap, Target } from 'lucide-react';
+import { StepWrapper } from '../StepWrapper';
 
 interface Step7MindfulnessChallengeProps {
   userProfile: UserProfile;
   onUpdateProfile: (updates: Partial<UserProfile>) => void;
   onNext: () => void;
+  onBack?: () => void;
 }
 
-const Step7MindfulnessChallenge = ({ userProfile, onUpdateProfile, onNext }: Step7MindfulnessChallengeProps) => {
+const Step7MindfulnessChallenge = ({ userProfile, onUpdateProfile, onNext, onBack }: Step7MindfulnessChallengeProps) => {
   const [phase, setPhase] = useState<'instructions' | 'challenge' | 'completed'>('instructions');
   const [isActive, setIsActive] = useState(false);
   const [timeElapsed, setTimeElapsed] = useState(0);

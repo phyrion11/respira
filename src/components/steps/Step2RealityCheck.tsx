@@ -6,9 +6,10 @@ interface Step2RealityCheckProps {
   userProfile: UserProfile;
   onUpdateProfile: (updates: Partial<UserProfile>) => void;
   onNext: () => void;
+  onBack?: () => void;
 }
 
-const Step2RealityCheck = ({ userProfile, onUpdateProfile, onNext }: Step2RealityCheckProps) => {
+const Step2RealityCheck = ({ userProfile, onUpdateProfile, onNext, onBack }: Step2RealityCheckProps) => {
   const [dailyCigarettes, setDailyCigarettes] = useState(20);
   const [cigarettePrice, setCigarettePrice] = useState(12);
   const [isSimulating, setIsSimulating] = useState(false);

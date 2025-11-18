@@ -4,7 +4,6 @@ import Step1CharacterCreation from './steps/Step1CharacterCreation';
 import Step2RealityCheck from './steps/Step2RealityCheck';
 import Step3GoalSelection from './steps/Step3GoalSelection';
 import Step4Calculator from './steps/Step4Calculator';
-import Step5HealthSimulator from './steps/Step5HealthSimulator';
 import Step6BreathingChallenge from './steps/Step6BreathingChallenge';
 import Step7MindfulnessChallenge from './steps/Step7MindfulnessChallenge';
 import Step8ResistanceChallenge from './steps/Step8ResistanceChallenge';
@@ -121,6 +120,11 @@ const FunnelContainer: React.FC<FunnelContainerProps> = ({ onScoreUpdate }) => {
     setCurrentStep(nextStep);
   };
 
+  const handleBack = () => {
+    const prevStep = Math.max(1, currentStep - 1);
+    setCurrentStep(prevStep);
+  };
+
   const handleScoreUpdate = (points: number) => {
     setTotalScore(prev => prev + points);
   };
@@ -199,25 +203,23 @@ const FunnelContainer: React.FC<FunnelContainerProps> = ({ onScoreUpdate }) => {
       case 1:
         return <Step1CharacterCreation userProfile={userProfile} onUpdateProfile={handleProfileUpdate} onNext={handleNext} />;
       case 2:
-        return <Step2RealityCheck userProfile={userProfile} onUpdateProfile={handleProfileUpdate} onNext={handleNext} />;
+        return <Step2RealityCheck userProfile={userProfile} onUpdateProfile={handleProfileUpdate} onNext={handleNext} onBack={handleBack} />;
       case 3:
-        return <Step3GoalSelection userProfile={userProfile} onUpdateProfile={handleProfileUpdate} onNext={handleNext} />;
+        return <Step3GoalSelection userProfile={userProfile} onUpdateProfile={handleProfileUpdate} onNext={handleNext} onBack={handleBack} />;
       case 4:
-        return <Step4Calculator onNext={handleNext} onUpdateScore={handleScoreUpdate} onUpdateProgress={handleProgressUpdate} characterData={characterData} />;
+        return <Step4Calculator onNext={handleNext} onBack={handleBack} onUpdateScore={handleScoreUpdate} onUpdateProgress={handleProgressUpdate} characterData={characterData} />;
       case 5:
-        return <Step5HealthSimulator onNext={handleNext} onBack={() => setCurrentStep(currentStep - 1)} userData={characterData} onUpdateUserData={handleCharacterUpdate} />;
+        return <Step6BreathingChallenge userProfile={userProfile} onUpdateProfile={handleProfileUpdate} onNext={handleNext} onBack={handleBack} />;
       case 6:
-        return <Step6BreathingChallenge userProfile={userProfile} onUpdateProfile={handleProfileUpdate} onNext={handleNext} />;
+        return <Step7MindfulnessChallenge userProfile={userProfile} onUpdateProfile={handleProfileUpdate} onNext={handleNext} onBack={handleBack} />;
       case 7:
-        return <Step7MindfulnessChallenge userProfile={userProfile} onUpdateProfile={handleProfileUpdate} onNext={handleNext} />;
+        return <Step8ResistanceChallenge onNext={handleNext} onBack={handleBack} onUpdateScore={handleScoreUpdate} />;
       case 8:
-        return <Step8ResistanceChallenge onNext={handleNext} onUpdateScore={handleScoreUpdate} />;
+        return <Step9FocusChallenge onNext={handleNext} onBack={handleBack} onUpdateScore={handleScoreUpdate} />;
       case 9:
-        return <Step9FocusChallenge onNext={handleNext} onUpdateScore={handleScoreUpdate} />;
+        return <Step10BossChallenge userProfile={userProfile} onUpdateProfile={handleProfileUpdate} onNext={handleNext} onBack={handleBack} />;
       case 10:
-        return <Step10BossChallenge userProfile={userProfile} onUpdateProfile={handleProfileUpdate} onNext={handleNext} />;
-      case 11:
-        return <Step11FinalOffer userProfile={userProfile} onUpdateProfile={handleProfileUpdate} onNext={handleNext} />;
+        return <Step11FinalOffer userProfile={userProfile} onUpdateProfile={handleProfileUpdate} onNext={handleNext} onBack={handleBack} />;
       default:
         return <Step1CharacterCreation userProfile={userProfile} onUpdateProfile={handleProfileUpdate} onNext={handleNext} />;
     }

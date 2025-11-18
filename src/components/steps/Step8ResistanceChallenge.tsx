@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { ChevronRight, Shield, Target, Zap, Clock, Award } from 'lucide-react';
+import { StepWrapper } from '../StepWrapper';
 
 interface Step8ResistanceChallengeProps {
   onNext: () => void;
+  onBack?: () => void;
   onUpdateScore: (points: number) => void;
 }
 
-const Step8ResistanceChallenge: React.FC<Step8ResistanceChallengeProps> = ({ onNext, onUpdateScore }) => {
+const Step8ResistanceChallenge: React.FC<Step8ResistanceChallengeProps> = ({ onNext, onBack, onUpdateScore }) => {
   const [currentPhase, setCurrentPhase] = useState<'instructions' | 'challenge' | 'completed'>('instructions');
   const [timeLeft, setTimeLeft] = useState(30);
   const [resistanceLevel, setResistanceLevel] = useState(0);

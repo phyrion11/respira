@@ -1,14 +1,16 @@
 import { useState, useEffect } from 'react';
 import { UserProfile } from '@/types/funnel';
 import { Skull, Zap, Shield, Sword, Timer, Trophy, Star, AlertTriangle } from 'lucide-react';
+import { StepWrapper } from '../StepWrapper';
 
 interface Step10BossChallengeProps {
   userProfile: UserProfile;
   onUpdateProfile: (updates: Partial<UserProfile>) => void;
   onNext: () => void;
+  onBack?: () => void;
 }
 
-const Step10BossChallenge = ({ userProfile, onUpdateProfile, onNext }: Step10BossChallengeProps) => {
+const Step10BossChallenge = ({ userProfile, onUpdateProfile, onNext, onBack }: Step10BossChallengeProps) => {
   const [phase, setPhase] = useState<'intro' | 'instructions' | 'challenge' | 'quicktime' | 'victory'>('intro');
   const [isActive, setIsActive] = useState(false);
   const [timeElapsed, setTimeElapsed] = useState(0);

@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { ChevronRight, Eye, Target, Zap, Clock, Award, Circle } from 'lucide-react';
+import { StepWrapper } from '../StepWrapper';
 
 interface Step9FocusChallengeProps {
   onNext: () => void;
+  onBack?: () => void;
   onUpdateScore: (points: number) => void;
 }
 
-const Step9FocusChallenge: React.FC<Step9FocusChallengeProps> = ({ onNext, onUpdateScore }) => {
+const Step9FocusChallenge: React.FC<Step9FocusChallengeProps> = ({ onNext, onBack, onUpdateScore }) => {
   const [currentPhase, setCurrentPhase] = useState<'instructions' | 'challenge' | 'completed'>('instructions');
   const [timeLeft, setTimeLeft] = useState(45);
   const [focusLevel, setFocusLevel] = useState(0);

@@ -1,14 +1,16 @@
 import { useState, useEffect } from 'react';
 import { UserProfile } from '@/types/funnel';
 import { Wind, Play, Pause, SkipForward, Trophy, Timer, Zap } from 'lucide-react';
+import { StepWrapper } from '../StepWrapper';
 
 interface Step6BreathingChallengeProps {
   userProfile: UserProfile;
   onUpdateProfile: (updates: Partial<UserProfile>) => void;
   onNext: () => void;
+  onBack?: () => void;
 }
 
-const Step6BreathingChallenge = ({ userProfile, onUpdateProfile, onNext }: Step6BreathingChallengeProps) => {
+const Step6BreathingChallenge = ({ userProfile, onUpdateProfile, onNext, onBack }: Step6BreathingChallengeProps) => {
   const [phase, setPhase] = useState<'instructions' | 'challenge' | 'completed'>('instructions');
   const [isActive, setIsActive] = useState(false);
   const [timeElapsed, setTimeElapsed] = useState(0);
@@ -100,16 +102,16 @@ const Step6BreathingChallenge = ({ userProfile, onUpdateProfile, onNext }: Step6
 
   if (phase === 'instructions') {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-background to-primary/5 flex flex-col">
-        <div className="flex-1 flex flex-col justify-center p-6 max-w-md mx-auto w-full">
-          
-          <div className="text-center mb-8">
+      <StepWrapper 
+        title="🌬️ Desafio da Respiração"
+        subtitle="Pratique respiração consciente e ganhe pontos"
+        onBack={onBack}
+      >
+        <div className="space-y-6">
+          <div className="text-center">
             <div className="w-20 h-20 mx-auto mb-6 premium-card bg-gradient-to-br from-primary/20 to-success/20 border-primary/30 flex items-center justify-center animate-float">
               <Wind className="w-10 h-10 text-primary" />
             </div>
-            <h1 className="text-3xl font-bold text-gradient mb-4">
-              Desafio da Respiração
-            </h1>
             <p className="text-muted-foreground mb-2">
               Nível 1 • Dificuldade: Iniciante
             </p>
@@ -162,13 +164,13 @@ const Step6BreathingChallenge = ({ userProfile, onUpdateProfile, onNext }: Step6
 
           <button
             onClick={handleStart}
-            className="w-full premium-button text-lg flex items-center justify-center gap-3"
+            className="w-full btn-premium text-lg flex items-center justify-center gap-3"
           >
             <Play className="w-6 h-6" />
             Iniciar Desafio
           </button>
         </div>
-      </div>
+      </StepWrapper>
     );
   }
 
