@@ -27,10 +27,37 @@ const config: Config = {
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
+          glow: "hsl(var(--primary-glow))",
+        },
+        gold: {
+          DEFAULT: "hsl(var(--gold))",
+          light: "hsl(var(--gold-light))",
+          dark: "hsl(var(--gold-dark))",
         },
         secondary: {
           DEFAULT: "hsl(var(--secondary))",
           foreground: "hsl(var(--secondary-foreground))",
+        },
+        success: {
+          DEFAULT: "hsl(var(--success))",
+          light: "hsl(var(--success-light))",
+          foreground: "hsl(var(--success-foreground))",
+        },
+        warning: {
+          DEFAULT: "hsl(var(--warning))",
+          light: "hsl(var(--warning-light))",
+          foreground: "hsl(var(--warning-foreground))",
+        },
+        smoking: {
+          DEFAULT: "hsl(var(--smoking))",
+          light: "hsl(var(--smoking-light))",
+          dark: "hsl(var(--smoking-dark))",
+          foreground: "hsl(var(--smoking-foreground))",
+        },
+        dream: {
+          DEFAULT: "hsl(var(--dream))",
+          light: "hsl(var(--dream-light))",
+          foreground: "hsl(var(--dream-foreground))",
         },
         destructive: {
           DEFAULT: "hsl(var(--destructive))",
@@ -51,13 +78,18 @@ const config: Config = {
         card: {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
+          glass: "hsl(var(--card-glass))",
         },
-        // Custom gamification colors
-        smoking: "hsl(var(--smoking))",
-        success: "hsl(var(--success))",
-        warning: "hsl(var(--warning))",
-        gold: "hsl(var(--gold))",
-        dream: "hsl(var(--dream))",
+        sidebar: {
+          DEFAULT: "hsl(var(--sidebar-background))",
+          foreground: "hsl(var(--sidebar-foreground))",
+          primary: "hsl(var(--sidebar-primary))",
+          "primary-foreground": "hsl(var(--sidebar-primary-foreground))",
+          accent: "hsl(var(--sidebar-accent))",
+          "accent-foreground": "hsl(var(--sidebar-accent-foreground))",
+          border: "hsl(var(--sidebar-border))",
+          ring: "hsl(var(--sidebar-ring))",
+        },
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -74,6 +106,28 @@ const config: Config = {
         "accordion-up": {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
+        },
+        shimmer: {
+          "0%": { backgroundPosition: "-200% 0" },
+          "100%": { backgroundPosition: "200% 0" },
+        },
+        float: {
+          "0%, 100%": { transform: "translateY(0px)" },
+          "50%": { transform: "translateY(-10px)" },
+        },
+        glow: {
+          "0%, 100%": { opacity: "1" },
+          "50%": { opacity: "0.5" },
+        },
+        "pulse-glow": {
+          "0%, 100%": {
+            boxShadow: "0 0 20px hsl(var(--primary) / 0.3)",
+            opacity: "1",
+          },
+          "50%": {
+            boxShadow: "0 0 40px hsl(var(--primary) / 0.6)",
+            opacity: "0.8",
+          },
         },
         // Gamification animations
         "xp-gain": {
@@ -115,13 +169,17 @@ const config: Config = {
           "100%": { transform: "translateY(-100px) translateX(30px) rotate(360deg)", opacity: "0" },
         },
         "glow-pulse": {
-          "0%, 100%": { boxShadow: "0 0 20px rgba(34, 197, 94, 0.3)" },
-          "50%": { boxShadow: "0 0 40px rgba(34, 197, 94, 0.6)" },
+          "0%, 100%": { boxShadow: "0 0 20px hsl(120 100% 50% / 0.3)" },
+          "50%": { boxShadow: "0 0 40px hsl(120 100% 50% / 0.6)" },
         },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        shimmer: "shimmer 2s linear infinite",
+        float: "float 3s ease-in-out infinite",
+        glow: "glow 2s ease-in-out infinite",
+        "pulse-glow": "pulse-glow 2s ease-in-out infinite",
         // Gamification animations
         "xp-gain": "xp-gain 1s ease-out",
         "coin-collect": "coin-collect 0.8s ease-out",
@@ -156,11 +214,11 @@ const config: Config = {
         "4xl": "72px",
       },
       boxShadow: {
-        "premium": "0 20px 40px rgba(0, 0, 0, 0.1), 0 8px 16px rgba(0, 0, 0, 0.06)",
-        "glass": "0 8px 32px rgba(31, 38, 135, 0.37)",
-        "glow-primary": "0 0 30px rgba(34, 197, 94, 0.3)",
-        "glow-gold": "0 0 30px rgba(255, 215, 0, 0.3)",
-        "button": "0 4px 15px rgba(34, 197, 94, 0.4)",
+        premium: "0 32px 64px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(255, 255, 255, 0.05)",
+        glass: "0 8px 32px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.1)",
+        "glow-primary": "0 0 40px hsl(120 100% 50% / 0.6)",
+        "glow-gold": "0 0 40px hsl(48 100% 55% / 0.5)",
+        depth: "0 40px 80px rgba(0, 0, 0, 0.9)",
       },
     },
   },

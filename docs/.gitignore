@@ -1,0 +1,9 @@
+# Não commitar screenshots grandes (opcional)
+# Remova esta linha se quiser versionar os screenshots
+# reference-screenshots/*.png
+
+# Análises temporárias
+docling-analysis/*.tmp
+*.pyc
+__pycache__/
+
